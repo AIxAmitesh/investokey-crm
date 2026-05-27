@@ -45,11 +45,11 @@ export default function SalesDashboard() {
     return {
       total: leads.length,
       NEW: leads.filter((l) => l.status === 'NEW').length,
-      CONTACTED: leads.filter((l) => l.status === 'CONTACTED').length,
-      QUALIFIED: leads.filter((l) => l.status === 'QUALIFIED').length,
-      NEGOTIATING: leads.filter((l) => l.status === 'NEGOTIATING').length,
+      INTERESTED: leads.filter((l) => l.status === 'INTERESTED').length,
+      NOT_INTERESTED: leads.filter((l) => l.status === 'NOT INTERESTED').length,
+      NOT_CONTACTED: leads.filter((l) => l.status === 'NOT CONTACTED').length,
+      SITE_VISIT: leads.filter((l) => l.status === 'SITE VISIT').length,
       CLOSED: leads.filter((l) => l.status === 'CLOSED').length,
-      LOST: leads.filter((l) => l.status === 'LOST').length,
     };
   };
 
@@ -57,11 +57,11 @@ export default function SalesDashboard() {
 
   const statuses = [
     { key: 'NEW', label: 'New', icon: '📌', color: 'blue' },
-    { key: 'CONTACTED', label: 'Contacted', icon: '📞', color: 'yellow' },
-    { key: 'QUALIFIED', label: 'Qualified', icon: '✓', color: 'purple' },
-    { key: 'NEGOTIATING', label: 'Negotiating', icon: '💬', color: 'orange' },
-    { key: 'CLOSED', label: 'Closed', icon: '✅', color: 'green' },
-    { key: 'LOST', label: 'Lost', icon: '❌', color: 'red' },
+    { key: 'INTERESTED', label: 'INTERESTED', icon: '📞', color: 'yellow' },
+    { key: 'NOT INTERESTED', label: 'NOT INTERESTED', icon: '✓', color: 'purple' },
+    { key: 'NOT CONTACTED', label: 'NOT CONTACTED', icon: '💬', color: 'orange' },
+    { key: 'SITE VISIT', label: 'SITE VISIT', icon: '✅', color: 'green' },
+    { key: 'CLOSED', label: 'CLOSED', icon: '❌', color: 'red' },
   ];
 
   const getColorClasses = (color: string) => {
