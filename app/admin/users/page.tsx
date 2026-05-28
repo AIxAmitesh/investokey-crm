@@ -155,9 +155,9 @@ export default function UsersPage() {
   };
 
   return (
-    <div className="p-8">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Users</h1>
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Users</h1>
         <button
           onClick={() => setShowForm(!showForm)}
           className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
@@ -255,51 +255,40 @@ export default function UsersPage() {
         </div>
       )}
 
-      <div className="bg-white rounded-lg shadow overflow-hidden">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
         {loading ? (
           <div className="flex items-center justify-center h-64">
             <div className="text-center">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-              <p className="mt-2 text-gray-600">Loading users...</p>
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+              <p className="mt-2 text-gray-600 text-sm">Loading users...</p>
             </div>
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[480px]">
               <thead>
-                <tr className="bg-gray-100 border-b">
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                    Name
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                    Email
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                    Role
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                    Status
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                    Actions
-                  </th>
+                <tr className="bg-gray-50 border-b">
+                  <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Name</th>
+                  <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide hidden sm:table-cell">Email</th>
+                  <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Role</th>
+                  <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Status</th>
+                  <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Actions</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="divide-y divide-gray-100">
                 {users.map((user) => (
-                  <tr key={user.id} className="border-b hover:bg-gray-50">
-                    <td className="px-6 py-4 text-sm text-gray-900 font-medium">
-                      {user.name}
+                  <tr key={user.id} className="hover:bg-gray-50">
+                    <td className="px-4 sm:px-6 py-4">
+                      <p className="text-sm font-medium text-gray-900">{user.name}</p>
+                      <p className="text-xs text-gray-400 sm:hidden truncate">{user.email}</p>
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-600">
-                      {user.email}
-                    </td>
-                    <td className="px-6 py-4 text-sm text-gray-600">
-                      <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">
-                        {user.role === 'ADMIN' ? 'Admin' : 'Sales User'}
+                    <td className="px-4 sm:px-6 py-4 text-sm text-gray-600 hidden sm:table-cell">{user.email}</td>
+                    <td className="px-4 sm:px-6 py-4">
+                      <span className="px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">
+                        {user.role === 'ADMIN' ? 'Admin' : 'Sales'}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-sm">
+                    <td className="px-4 sm:px-6 py-4 text-sm">
                       <button
                         onClick={() => handleToggleStatus(user.id)}
                         disabled={togglingId === user.id || user.role === 'ADMIN'}
@@ -321,11 +310,11 @@ export default function UsersPage() {
                         )}
                       </button>
                     </td>
-                    <td className="px-6 py-4 text-sm space-x-3">
+                    <td className="px-4 sm:px-6 py-4 text-sm">
                       {user.role !== 'ADMIN' && (
                         <button
                           onClick={() => handleDelete(user.id)}
-                          className="text-red-600 hover:text-red-800 font-medium"
+                          className="text-red-500 hover:text-red-700 font-medium text-sm"
                         >
                           Delete
                         </button>

@@ -41,7 +41,16 @@ export default function MyLeadsPage() {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
-  const statusOptions = ['NEW', 'INTERESTED', 'NOT_INTERESTED', 'NOT_CONTACTED', 'SITE_VISIT', 'CLOSED'];
+  const statusOptions = [
+    { value: 'NEW', label: 'New' },
+    { value: 'INTERESTED', label: 'Interested' },
+    { value: 'NOT INTERESTED', label: 'Not Interested' },
+    { value: 'NOT CONTACTED', label: 'Not Contacted' },
+    { value: 'FOLLOW UP', label: 'Follow Up' },
+    { value: 'SITE VISIT', label: 'Site Visit' },
+    { value: 'CLOSED', label: 'Closed' },
+    { value: 'LOST', label: 'Lost' },
+  ];
 
   useEffect(() => {
     fetchLeads();
@@ -89,12 +98,14 @@ export default function MyLeadsPage() {
 
   const getStatusColor = (status: string) => {
     const colors: Record<string, string> = {
-      NEW: 'bg-blue-100 text-blue-800',
-      INTERESTED: 'bg-yellow-100 text-yellow-800',
-      NOT_INTERESTED: 'bg-purple-100 text-purple-800',
-      NOT_CONTACTED: 'bg-orange-100 text-orange-800',
-      SITE_VISIT: 'bg-green-100 text-green-800',
-      CLOSED: 'bg-red-100 text-red-800',
+      'NEW': 'bg-blue-100 text-blue-800',
+      'INTERESTED': 'bg-yellow-100 text-yellow-800',
+      'NOT INTERESTED': 'bg-gray-100 text-gray-700',
+      'NOT CONTACTED': 'bg-orange-100 text-orange-800',
+      'FOLLOW UP': 'bg-purple-100 text-purple-800',
+      'SITE VISIT': 'bg-indigo-100 text-indigo-800',
+      'CLOSED': 'bg-green-100 text-green-800',
+      'LOST': 'bg-red-100 text-red-800',
     };
     return colors[status] || 'bg-gray-100 text-gray-800';
   };
@@ -139,8 +150,8 @@ export default function MyLeadsPage() {
             >
               <option value="ALL">All Leads</option>
               {statusOptions.map((status) => (
-                <option key={status} value={status}>
-                  {status}
+                <option key={status.value} value={status.value}>
+                  {status.label}
                 </option>
               ))}
             </select>

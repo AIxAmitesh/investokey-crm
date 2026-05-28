@@ -71,8 +71,8 @@ export default function AddLeadPage() {
   };
 
   return (
-    <div className="p-4 md:p-8">
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-8 gap-4">
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-3">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Add New Lead</h1>
         <Link
           href="/admin/leads"

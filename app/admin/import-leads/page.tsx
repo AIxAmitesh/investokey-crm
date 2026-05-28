@@ -171,8 +171,8 @@ export default function ImportLeadsPage() {
   };
 
   return (
-    <div className="p-8 w-full h-full overflow-auto">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Bulk Import Leads</h1>
+    <div className="p-4 sm:p-6 lg:p-8 w-full h-full overflow-auto">
+      <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Bulk Import Leads</h1>
 
       {/* STEP 1: UPLOAD */}
       {step === 'upload' && (

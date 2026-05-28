@@ -22,7 +22,16 @@ export default function UpdateLeadModal({
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  const statusOptions = ['NEW', 'CONTACTED', 'QUALIFIED', 'NEGOTIATING', 'CLOSED', 'LOST'];
+  const statusOptions = [
+    { value: 'NEW', label: 'New' },
+    { value: 'INTERESTED', label: 'Interested' },
+    { value: 'NOT INTERESTED', label: 'Not Interested' },
+    { value: 'NOT CONTACTED', label: 'Not Contacted' },
+    { value: 'FOLLOW UP', label: 'Follow Up' },
+    { value: 'SITE VISIT', label: 'Site Visit' },
+    { value: 'CLOSED', label: 'Closed' },
+    { value: 'LOST', label: 'Lost' },
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -123,8 +132,8 @@ export default function UpdateLeadModal({
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
             >
               {statusOptions.map((s) => (
-                <option key={s} value={s}>
-                  {s}
+                <option key={s.value} value={s.value}>
+                  {s.label}
                 </option>
               ))}
             </select>

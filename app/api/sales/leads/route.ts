@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { verifyToken, getTokenFromRequest } from '@/lib/auth';
@@ -20,7 +21,7 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const status = searchParams.get('status');
     const page = parseInt(searchParams.get('page') || '1');
-    const limit = 10;
+    const limit = Math.min(parseInt(searchParams.get('limit') || '10'), 500);
     const skip = (page - 1) * limit;
 
     // Get leads assigned to this user

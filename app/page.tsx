@@ -157,10 +157,10 @@ export default function LoginPage() {
               <strong>Demo Credentials:</strong>
             </p>
             <p className="text-sm text-gray-600 mb-1">
-              Admin: <code className="bg-gray-200 px-2 py-1 rounded text-xs">admin@example.com</code>
+              Admin: <code className="bg-gray-200 px-2 py-1 rounded text-xs">admin@investokey.com</code> / <code className="bg-gray-200 px-2 py-1 rounded text-xs">admin123</code>
             </p>
             <p className="text-sm text-gray-600">
-              Sales: <code className="bg-gray-200 px-2 py-1 rounded text-xs">sales@example.com</code>
+              Sales: <code className="bg-gray-200 px-2 py-1 rounded text-xs">john@investokey.com</code> / <code className="bg-gray-200 px-2 py-1 rounded text-xs">sales123</code>
             </p>
           </div>
         </div>

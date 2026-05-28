@@ -76,30 +76,30 @@ export default function AdminLeadsPage() {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">All Leads</h1>
-        <div className="flex gap-4">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">All Leads</h1>
+        <div className="flex gap-2 sm:gap-4">
           <Link
             href="/admin/add-lead"
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
           >
             + Add Lead
           </Link>
           <Link
             href="/admin/import-leads"
-            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+            className="bg-green-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
           >
-            📤 Import Leads
+            Import
           </Link>
         </div>
       </div>
 
       {/* Filter */}
-      <div className="mb-6 bg-white rounded-lg shadow p-4">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Filter by Status:
+      <div className="mb-4 bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+        <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+          Filter by Status
         </label>
         <div className="flex gap-2 flex-wrap">
           <button

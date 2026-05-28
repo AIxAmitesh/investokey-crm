@@ -1,8 +1,10 @@
 export const LEAD_STATUSES = [
   { value: 'NEW', label: 'New', color: 'bg-blue-100 text-blue-800' },
-  { value: 'CONTACTED', label: 'Contacted', color: 'bg-yellow-100 text-yellow-800' },
-  { value: 'QUALIFIED', label: 'Qualified', color: 'bg-purple-100 text-purple-800' },
-  { value: 'NEGOTIATING', label: 'Negotiating', color: 'bg-orange-100 text-orange-800' },
+  { value: 'INTERESTED', label: 'Interested', color: 'bg-yellow-100 text-yellow-800' },
+  { value: 'NOT INTERESTED', label: 'Not Interested', color: 'bg-gray-100 text-gray-700' },
+  { value: 'NOT CONTACTED', label: 'Not Contacted', color: 'bg-orange-100 text-orange-800' },
+  { value: 'FOLLOW UP', label: 'Follow Up', color: 'bg-purple-100 text-purple-800' },
+  { value: 'SITE VISIT', label: 'Site Visit', color: 'bg-indigo-100 text-indigo-800' },
   { value: 'CLOSED', label: 'Closed', color: 'bg-green-100 text-green-800' },
   { value: 'LOST', label: 'Lost', color: 'bg-red-100 text-red-800' },
 ];

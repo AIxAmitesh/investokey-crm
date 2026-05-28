@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { verifyToken, getTokenFromRequest } from '@/lib/auth';
@@ -20,7 +21,7 @@ export async function GET(request: NextRequest) {
     const totalLeads = await prisma.lead.count();
 
     // Get leads by status
-    const statuses = ['NEW', 'CONTACTED', 'QUALIFIED', 'NEGOTIATING', 'CLOSED', 'LOST'];
+    const statuses = ['NEW', 'INTERESTED', 'NOT INTERESTED', 'NOT CONTACTED', 'FOLLOW UP', 'SITE VISIT', 'CLOSED', 'LOST'];
     const stats: Record<string, number> = {};
 
     for (const status of statuses) {

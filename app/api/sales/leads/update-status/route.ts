@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { verifyToken, getTokenFromRequest } from '@/lib/auth';
@@ -26,7 +27,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const validStatuses = ['NEW', 'CONTACTED', 'QUALIFIED', 'NEGOTIATING', 'CLOSED', 'LOST'];
+    const validStatuses = ['NEW', 'INTERESTED', 'NOT INTERESTED', 'NOT CONTACTED', 'FOLLOW UP', 'SITE VISIT', 'CLOSED', 'LOST'];
     if (!validStatuses.includes(status)) {
       return NextResponse.json(
         { error: 'Invalid status' },
