@@ -1,7 +1,8 @@
-export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { verifyToken, getTokenFromRequest } from '@/lib/auth';
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {
@@ -30,24 +31,20 @@ export async function GET(request: NextRequest) {
       select: { leadId: true },
     });
 
-    const leadIds = assignments.map((a) => a.leadId);
+    const leadIds = assignments.map((a: { leadId: string }) => a.leadId);
 
-    const where: any = {
-      id: { in: leadIds },
-    };
-
-    if (status && status !== 'ALL') {
-      where.status = status;
-    }
+    const statusFilter = status && status !== 'ALL' ? { status } : {};
 
     const leads = await prisma.lead.findMany({
-      where,
+      where: { id: { in: leadIds }, ...statusFilter },
       orderBy: { createdAt: 'desc' },
       take: limit,
       skip,
     });
 
-    const total = await prisma.lead.count({ where });
+    const total = await prisma.lead.count({
+      where: { id: { in: leadIds }, ...statusFilter },
+    });
 
     return NextResponse.json(
       {

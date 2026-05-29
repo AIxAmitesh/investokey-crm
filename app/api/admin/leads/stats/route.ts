@@ -1,7 +1,8 @@
-export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { verifyToken, getTokenFromRequest } from '@/lib/auth';
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {
@@ -32,23 +33,19 @@ export async function GET(request: NextRequest) {
     }
 
     // Get leads by assigned user
-    const userStats = await prisma.leadAssignment.groupBy({
-      by: ['userId'],
-      _count: true,
-    });
-
-    const userDetails = await prisma.user.findMany({
+    const salesUsers = await prisma.user.findMany({
       where: { role: 'SALES_USER' },
       select: { id: true, name: true, email: true },
     });
 
-    const userBreakdown = userDetails.map((user) => {
-      const count = userStats.find((us) => us.userId === user.id)?._count || 0;
-      return {
-        ...user,
-        leadCount: count,
-      };
-    });
+    const userBreakdown = await Promise.all(
+      salesUsers.map(async (user: { id: string; name: string; email: string }) => {
+        const leadCount = await prisma.leadAssignment.count({
+          where: { userId: user.id },
+        });
+        return { id: user.id, name: user.name, email: user.email, leadCount };
+      })
+    );
 
     return NextResponse.json(
       {
