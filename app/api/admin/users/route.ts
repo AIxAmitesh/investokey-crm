@@ -24,6 +24,7 @@ export async function GET(request: NextRequest) {
         email: true,
         name: true,
         role: true,
+        active: true,
         createdAt: true,
       },
       orderBy: {
